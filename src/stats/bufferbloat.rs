@@ -46,7 +46,7 @@ pub struct BufferbloatAssessment {
 impl BufferbloatAssessment {
     /// Assess bufferbloat severity by comparing baseline latency (P50 / Min) with tail latency (P95).
     pub fn analyze(p: &Percentiles) -> Self {
-        let baseline_ms = p.p50_ms.min(p.min_ms).max(0.001);
+        let baseline_ms = p.p50_ms.max(0.001);
         let loaded_p95_ms = p.p95_ms;
         let delta_ms = (loaded_p95_ms - baseline_ms).max(0.0);
         let inflation_ratio = loaded_p95_ms / baseline_ms;

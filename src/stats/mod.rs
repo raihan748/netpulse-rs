@@ -6,8 +6,8 @@ use serde::{Deserialize, Serialize};
 
 use crate::engine::{ProbeConfig, ProbeSample};
 pub use bufferbloat::{BufferbloatAssessment, BufferbloatGrade};
-pub use jitter::{compute_final_jitter_ms, Rfc3550Jitter};
-pub use percentile::Percentiles;
+pub use jitter::{compute_final_jitter_ms, compute_jitter_series, Rfc3550Jitter};
+pub use percentile::{interpolate_percentile, Percentiles};
 
 /// Aggregate telemetry summary of an active probing session.
 #[derive(Debug, Clone, Serialize, Deserialize)]
